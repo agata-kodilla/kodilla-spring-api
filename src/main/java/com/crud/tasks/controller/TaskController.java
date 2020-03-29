@@ -1,6 +1,6 @@
-package com.kodilla.spring.tasks.controller;
+package com.crud.tasks.controller;
 
-import com.kodilla.spring.tasks.domain.TaskDto;
+import com.crud.tasks.domain.TaskDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

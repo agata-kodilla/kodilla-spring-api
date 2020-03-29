@@ -1,6 +1,5 @@
-package com.kodilla.spring.tasks;
+package com.crud.tasks;
 
-import com.kodilla.spring.tasks.domain.TaskDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

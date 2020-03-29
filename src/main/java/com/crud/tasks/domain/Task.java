@@ -1,4 +1,4 @@
-package com.kodilla.spring.tasks.domain;
+package com.crud.tasks.domain;
 
 public class Task {
     private long id;
