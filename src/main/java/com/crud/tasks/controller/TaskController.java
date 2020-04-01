@@ -45,5 +45,6 @@ public class TaskController {
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void createTask(@RequestBody TaskDto taskDto) {
+        service.save(taskMapper.mapToTask(taskDto));
     }
 }
