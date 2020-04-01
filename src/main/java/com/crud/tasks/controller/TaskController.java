@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -31,15 +32,13 @@ public class TaskController {
     }
 
     @DeleteMapping("{id}")
-  //  @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity deleteTask(Long taskId) {
-        //
-        return ResponseEntity.notFound().build();
+    public void deleteTask(@PathVariable("id") Long taskId) {
+        service.deleteById(taskId);
     }
 
-    @PutMapping("{id}")
-    public TaskDto updateTask(TaskDto taskDto) {
-        return new TaskDto(1L, "Edited test title", "Edited Test_content");
+    @PutMapping()
+    public TaskDto updateTask(@RequestBody TaskDto taskDto) {
+        return taskMapper.mapToTaskDto(service.save(taskMapper.mapToTask(taskDto)));
     }
 
     @PostMapping()
