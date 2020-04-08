@@ -5,9 +5,12 @@ import com.crud.tasks.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Transactional
 public class DbService {
     @Autowired
     private TaskRepository repository;
@@ -16,8 +19,8 @@ public class DbService {
         return repository.findAll();
     }
 
-    public <Optional>Task getById(final Long id){
-        return repository.findById(id).get();
+    public Optional<Task> getById(final Long id){
+        return repository.findById(id);
     }
 
     public Task save(Task task) {
@@ -25,8 +28,15 @@ public class DbService {
     }
 
 
-    public void deleteById(final Long id){
-       repository.deleteById(id);
+    public boolean deleteById(final Long id){
+        if(repository.existsById(id)){
+            repository.deleteById(id);
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
 
 }
