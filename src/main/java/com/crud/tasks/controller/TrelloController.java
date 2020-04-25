@@ -24,15 +24,10 @@ public class TrelloController {
 
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
-//        trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
-//
-//        trelloClient.getTrelloBoards().stream().filter(p->p.getId().contains("kodilla") && p.getId().contains(
-//                "kodilla"));
-
-        Optional.of(trelloClient.getTrelloBoards())
+        Optional.of(trelloBoards)
                 .orElse(Collections.emptyList())
                 .stream()
-                .filter(p->p.getId().contains("kodilla") && p.getId().contains(
+                .filter(p->p.getId().contains("kodilla") && p.getName().contains(
                         "kodilla"))
                 .collect(Collectors.toList());
     }
